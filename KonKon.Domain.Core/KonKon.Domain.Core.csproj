@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CommandResult.cs" />
+    <Compile Include="Models\FailureDetail.cs" />
+    <Compile Include="Models\FailureReason.cs" />
+    <Compile Include="Models\QueryResult.cs" />
+    <Compile Include="Models\StatusCode.cs" />
+    <Compile Include="Models\ValidationDetail.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Interfaces\Commands\ICommand.cs" />
+    <Compile Include="Interfaces\Commands\ICommandArgument.cs" />
+    <Compile Include="Interfaces\Commands\ICommandHandler.cs" />
+    <Compile Include="Interfaces\IFailureDetail.cs" />
+    <Compile Include="Interfaces\IResult.cs" />
+    <Compile Include="Interfaces\IValidationDetail.cs" />
+    <Compile Include="Interfaces\Adapters\IAccountAdapter.cs" />
+    <Compile Include="Interfaces\Queries\IQuery.cs" />
+    <Compile Include="Interfaces\Queries\IQueryArgument.cs" />
+    <Compile Include="Interfaces\Queries\IQueryHandler.cs" />
+    <Compile Include="Models\Identity\AccountBindingModels.cs" />
+    <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

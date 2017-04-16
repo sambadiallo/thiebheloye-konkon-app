@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace KonKon.Mobile.WebApi.Models
+namespace KonKon.Domain.Core.Models.Identity
 {
     // Models returned by AccountController actions.
 

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using KonKon.Mobile.WebApi.Providers;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using KonKon.Mobile.WebApi.Providers;
-using KonKon.Mobile.WebApi.Models;
+using KonKon.Data.EF.Models.Identity;
 
 namespace KonKon.Mobile.WebApi
 {
@@ -22,6 +18,7 @@ namespace KonKon.Mobile.WebApi
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            //AutofacConfig.Configure(app);
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -33,6 +30,7 @@ namespace KonKon.Mobile.WebApi
 
             // Configure the application for OAuth based flow
             PublicClientId = "self";
+             
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),

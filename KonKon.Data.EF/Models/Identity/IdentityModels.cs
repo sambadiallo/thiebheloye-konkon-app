@@ -1,10 +1,10 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 
-namespace KonKon.Mobile.WebApi.Models
+namespace KonKon.Data.EF.Models.Identity
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -18,7 +18,7 @@ namespace KonKon.Mobile.WebApi.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDisposable
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
