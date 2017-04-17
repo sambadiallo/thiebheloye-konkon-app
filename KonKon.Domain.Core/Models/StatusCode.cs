@@ -24,6 +24,7 @@ namespace KonKon.Domain.Core.Models
         GeneralError = 1009,
         [Description("Sorry, no result error.")]
         NullQueryResult = 1010,
+        UserCreating = 1011,
     }
 
 

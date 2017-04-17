@@ -5,6 +5,7 @@
         Technical,
         Business,
         Unhandled,
-        Security
+        Security,
+        Authorization
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using KonKon.Domain.Core.Interfaces;
 using Microsoft.AspNet.Identity;
 
 namespace KonKon.Mobile.WebApi.Controllers
@@ -11,26 +12,25 @@ namespace KonKon.Mobile.WebApi.Controllers
     [Authorize]
     public class BaseController : ApiController
     {
-        protected IHttpActionResult GetErrorResult(IdentityResult result)
+        protected IHttpActionResult GetErrorResult(IResult result)
         {
             if (result == null)
             {
                 return InternalServerError();
             }
 
-            if (!result.Succeeded)
+            if (!result.Success)
             {
-                if (result.Errors != null)
+                if (result.FailureDetails != null)
                 {
-                    foreach (string error in result.Errors)
+                    foreach (var error in result.FailureDetails)
                     {
-                        ModelState.AddModelError("", error);
+                        ModelState.AddModelError(error.StatusCode.ToString(), error.Information);
                     }
                 }
 
                 if (ModelState.IsValid)
                 {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
                     return BadRequest();
                 }
 

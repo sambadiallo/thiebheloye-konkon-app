@@ -34,7 +34,6 @@ namespace KonKon.Data.EF.Adapters
         }
 
 
-
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; }
 
         // GET api/Account/UserInfo
@@ -256,16 +255,17 @@ namespace KonKon.Data.EF.Adapters
 
         public async Task<IResult> Register(RegisterBindingModel model)
         {
+            var result = new CommandResult();
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var createResult = await _userManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded)
+            if (!createResult.Succeeded)
             {
-                //return GetErrorResult(result);
+                MapErrors(createResult, result);
             }
 
-            return new CommandResult();
+            return result;
         }
 
         // POST api/Account/RegisterExternal
@@ -368,6 +368,18 @@ namespace KonKon.Data.EF.Adapters
             }
         }
 
+        private static void MapErrors(IdentityResult createResult, IResult result)
+        {
+            foreach (var errorMessage in createResult.Errors)
+            {
+                result.FailureDetails.Add(new FailureDetail()
+                {
+                    StatusCode = StatusCode.UserCreating,
+                    Reason = FailureReason.Authorization,
+                    Information = errorMessage
+                });
+            }
+        }
         #endregion
     }
 }

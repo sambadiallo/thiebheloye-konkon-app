@@ -35,7 +35,7 @@ namespace KonKon.Mobile.WebApi.Controllers
 
             if (!result.Success)
             {
-                //return GetErrorResult(result);
+                return GetErrorResult(result);
             }
 
             return Ok();
