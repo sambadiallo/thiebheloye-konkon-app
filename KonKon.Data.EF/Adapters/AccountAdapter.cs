@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.ModelBinding;
-using DryIoc;
 using KonKon.Data.EF.Models.Identity;
 using KonKon.Domain.Core.Interfaces.Adapters;
 using KonKon.Domain.Core.Models.Identity;
@@ -24,22 +21,21 @@ namespace KonKon.Data.EF.Adapters
     public class AccountAdapter : IAccountAdapter
     {
         private const string LocalLoginProvider = "Local";
-        private readonly ApplicationUserManager _userManager;
+        private readonly UserManager _userManager;
         private readonly IAuthenticationManager _authenticationManager;
 
-        public AccountAdapter(ApplicationUserManager userManager,
-        ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
+        public AccountAdapter(UserManager userManager,
+        //ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
             IAuthenticationManager authenticationManager)
         {
             _userManager = userManager;
             _authenticationManager = authenticationManager;
-
-            AccessTokenFormat = accessTokenFormat;
+            // AccessTokenFormat = accessTokenFormat;
         }
 
 
 
-        public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+        public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; }
 
         // GET api/Account/UserInfo
 
@@ -53,9 +49,9 @@ namespace KonKon.Data.EF.Adapters
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
-        public async Task<ManageInfoViewModel> GetManageInfo(string userId, string returnUrl, bool generateState = false)
+        public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(userId);
+            IdentityUser user = await _userManager.FindByIdAsync(_authenticationManager.User.Identity.GetUserId());
 
             if (user == null)
             {
@@ -92,11 +88,11 @@ namespace KonKon.Data.EF.Adapters
         }
 
         // POST api/Account/ChangePassword
-        public async Task<IResult> ChangePassword(string userId, ChangePasswordBindingModel model)
+        public async Task<IResult> ChangePassword(ChangePasswordBindingModel model)
         {
 
 
-            IdentityResult result = await _userManager.ChangePasswordAsync(userId, model.OldPassword, model.NewPassword);
+            IdentityResult result = await _userManager.ChangePasswordAsync(_authenticationManager.User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
 
             if (!result.Succeeded)
             {
@@ -107,15 +103,15 @@ namespace KonKon.Data.EF.Adapters
         }
 
         // POST api/Account/SetPassword
-        public async Task<IResult<IdentityResult>> SetPassword(string userId, SetPasswordBindingModel model)
+        public async Task<IResult<IdentityResult>> SetPassword(SetPasswordBindingModel model)
         {
 
-            IdentityResult result = await _userManager.AddPasswordAsync(userId, model.NewPassword);
+            IdentityResult result = await _userManager.AddPasswordAsync(_authenticationManager.User.Identity.GetUserId(), model.NewPassword);
             return new CommandResult<IdentityResult>() { Response = result };
         }
 
         // POST api/Account/AddExternalLogin
-        public async Task<IResult> AddExternalLogin(string userId, AddExternalLoginBindingModel model)
+        public async Task<IResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
 
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
@@ -136,7 +132,7 @@ namespace KonKon.Data.EF.Adapters
                 // return BadRequest("The external login is already associated with an account.");
             }
 
-            IdentityResult result = await _userManager.AddLoginAsync(userId,
+            IdentityResult result = await _userManager.AddLoginAsync(_authenticationManager.User.Identity.GetUserId(),
             new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
 
 
@@ -144,7 +140,7 @@ namespace KonKon.Data.EF.Adapters
         }
 
         // POST api/Account/RemoveLogin
-        public async Task<IResult> RemoveLogin(string userId, RemoveLoginBindingModel model)
+        public async Task<IResult> RemoveLogin(RemoveLoginBindingModel model)
         {
 
 
@@ -152,14 +148,12 @@ namespace KonKon.Data.EF.Adapters
 
             if (model.LoginProvider == LocalLoginProvider)
             {
-                result = await _userManager.RemovePasswordAsync(userId);
+                result = await _userManager.RemovePasswordAsync(_authenticationManager.User.Identity.GetUserId());
             }
             else
             {
-                result = await _userManager.RemoveLoginAsync(userId, new UserLoginInfo(model.LoginProvider, model.ProviderKey));
+                result = await _userManager.RemoveLoginAsync(_authenticationManager.User.Identity.GetUserId(), new UserLoginInfo(model.LoginProvider, model.ProviderKey));
             }
-
-
 
             return new CommandResult();
         }
@@ -262,11 +256,9 @@ namespace KonKon.Data.EF.Adapters
 
         public async Task<IResult> Register(RegisterBindingModel model)
         {
-
-
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {

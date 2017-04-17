@@ -25,7 +25,7 @@ namespace KonKon.Mobile.WebApi.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+            var userManager = context.OwinContext.GetUserManager<UserManager>();
             //var userService = autofacLifetimeScope.Resolve<IUserService>();
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 

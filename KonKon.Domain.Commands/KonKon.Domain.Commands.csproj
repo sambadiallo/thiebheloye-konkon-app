@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\AutofacModule.cs" />
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\CommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,7 +63,6 @@
   <ItemGroup>
     <Folder Include="Account\" />
     <Folder Include="CommandArguments\" />
-    <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
