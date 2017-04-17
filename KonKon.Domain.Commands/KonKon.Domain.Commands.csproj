@@ -59,10 +59,10 @@
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\CommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\RegisterCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\" />
-    <Folder Include="CommandArguments\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

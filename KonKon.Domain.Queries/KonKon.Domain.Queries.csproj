@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,10 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\AutofacModule.cs" />
+    <Compile Include="Core\BaseQuery.cs" />
+    <Compile Include="Core\QueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KonKon.Domain.Core\KonKon.Domain.Core.csproj">
+      <Project>{2262948F-DE5C-4AA2-9D41-731FB43CE228}</Project>
+      <Name>KonKon.Domain.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

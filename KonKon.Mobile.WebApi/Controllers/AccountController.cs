@@ -321,7 +321,7 @@ namespace KonKon.Mobile.WebApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterCommandArguments model)
         {
             if (!ModelState.IsValid)
             {

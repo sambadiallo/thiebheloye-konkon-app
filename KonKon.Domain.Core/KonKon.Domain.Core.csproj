@@ -45,6 +45,7 @@
     <Compile Include="Models\CommandResult.cs" />
     <Compile Include="Models\FailureDetail.cs" />
     <Compile Include="Models\FailureReason.cs" />
+    <Compile Include="Models\Identity\RegisterCommandArguments.cs" />
     <Compile Include="Models\QueryResult.cs" />
     <Compile Include="Models\StatusCode.cs" />
     <Compile Include="Models\ValidationDetail.cs" />

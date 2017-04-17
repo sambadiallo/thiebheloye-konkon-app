@@ -253,7 +253,7 @@ namespace KonKon.Data.EF.Adapters
 
         // POST api/Account/Register
 
-        public async Task<IResult> Register(RegisterBindingModel model)
+        public async Task<CommandResult> Register(RegisterCommandArguments model)
         {
             var result = new CommandResult();
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
