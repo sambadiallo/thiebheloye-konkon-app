@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace KonKon.Mobile.WebApi
+namespace Thiebheloye.Identity.WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

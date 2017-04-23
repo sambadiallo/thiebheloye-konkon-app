@@ -1,11 +1,11 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin.Security;
-using KonKon.Data.EF.Models.Identity;
+using Thiebheloye.Identity.Data.EF.Models.Identity;
 using System.Threading.Tasks;
-using KonKon.Domain.Core.Models.Identity;
+using Thiebheloye.Domain.Core.Models.Identity;
 using Microsoft.AspNet.Identity;
 
-namespace KonKon.Mobile.WebApi.Controllers
+namespace Thiebheloye.Identity.WebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

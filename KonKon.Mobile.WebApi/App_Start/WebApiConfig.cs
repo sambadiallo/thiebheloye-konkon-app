@@ -4,7 +4,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
-namespace KonKon.Mobile.WebApi
+namespace Thiebheloye.Identity.WebApi
 {
     public static class WebApiConfig
     {
