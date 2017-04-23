@@ -7,7 +7,7 @@ using Thiebheloye.Domain.Core.Models.Identity;
 namespace Thiebheloye.Identity.WebApi.Controllers
 {
     [RoutePrefix("api/User")]
-    public class UserController : BaseController
+    public class UserController : BaseIdentityController
     {
         private readonly ICommandHandler<RegisterCommandArguments, CommandResult> _registerCommandHandler;
         private readonly ICommandHandler<LoginCommandArguments, CommandResult> _loginCommandHandler;

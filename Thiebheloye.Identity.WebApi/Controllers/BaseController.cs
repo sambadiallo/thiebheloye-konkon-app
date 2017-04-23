@@ -1,11 +1,10 @@
 ﻿using System.Web.Http;
 using Thiebheloye.Domain.Core.Interfaces;
-using Thiebheloye.Domain.Core.Interfaces;
 
 namespace Thiebheloye.Identity.WebApi.Controllers
 {
     [Authorize]
-    public class BaseController : ApiController
+    public class BaseIdentityController : ApiController
     {
         protected IHttpActionResult GetErrorResult(IResult result)
         {

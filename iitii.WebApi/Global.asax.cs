@@ -7,6 +7,7 @@ namespace iitii.WebApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(Thiebheloye.Identity.WebApi.WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }
