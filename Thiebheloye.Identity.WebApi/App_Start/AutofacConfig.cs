@@ -29,20 +29,12 @@ namespace Thiebheloye.Identity.WebApi
             // OPTIONAL: Register the Autofac filter provider.
             builder.RegisterWebApiFilterProvider(config);
 
-
             //Modules
             RegisterModules(builder);
-
-            //Filters 
-            //RegisterFilters(builder);
-
+            
             //identity
             RegisterIdentityTypes(builder);
-
-            //Caching
-            // builder.RegisterType<ApiOutputCache>().As<IApiOutputCache>().SingleInstance();
-
-
+ 
             //Set the dependency resolver to be Autofac.
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -59,28 +51,11 @@ namespace Thiebheloye.Identity.WebApi
             builder.RegisterType<TicketDataFormat>().As<ISecureDataFormat<AuthenticationTicket>>();
         }
 
-        private static void RegisterFilters(ContainerBuilder builder)
-        {
-
-        }
-
         private static void RegisterModules(ContainerBuilder builder)
         {
-            //builder.RegisterModule(new Thiebheloye.Caching.InMemory.Config.AutofacModule());
-            //builder.RegisterModule(new Thiebheloye.Caching.Redis.Config.AutofacModule());
-            //builder.RegisterModule(new Thiebheloye.Caching.Sync.Config.AutofacModule());
-
-            //builder.RegisterModule(new Thiebheloye.Data.Dapper.Config.AutofacModule());
             builder.RegisterModule(new Data.EF.Config.AutofacModule());
-
-            builder.RegisterModule(new Thiebheloye.Identity.Domain.Commands.Config.AutofacModule());
-            builder.RegisterModule(new Thiebheloye.Identity.Domain.Queries.Config.AutofacModule());
-
-            //builder.RegisterModule(new Thiebheloye.Logging.NLog.Config.AutofacModule());
-
-            //builder.RegisterModule(new Thiebheloye.Security.Filters.Config.AutofacModule());
-            //builder.RegisterModule(new Thiebheloye.Security.Filters.Config.AutofacModule());
-            //builder.RegisterModule(new Thiebheloye.Security.Identity.Config.AutofacModule());
+            builder.RegisterModule(new Domain.Commands.Config.AutofacModule());
+            builder.RegisterModule(new Domain.Queries.Config.AutofacModule());
         }
     }
 

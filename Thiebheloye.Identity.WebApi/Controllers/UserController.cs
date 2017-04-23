@@ -6,7 +6,6 @@ using Thiebheloye.Domain.Core.Models.Identity;
 
 namespace Thiebheloye.Identity.WebApi.Controllers
 {
-
     [RoutePrefix("api/User")]
     public class UserController : BaseController
     {

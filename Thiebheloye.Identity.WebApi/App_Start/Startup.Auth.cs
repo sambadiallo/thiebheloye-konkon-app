@@ -1,11 +1,11 @@
 ﻿using System;
-using Thiebheloye.Identity.WebApi.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Thiebheloye.Identity.Data.EF.Models.Identity;
+using Thiebheloye.Identity.Data.EF.Providers;
 
 namespace Thiebheloye.Identity.WebApi
 {

@@ -8,7 +8,6 @@ using Thiebheloye.Identity.Data.EF.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
-using Thiebheloye.Identity.WebApi.Providers;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.OAuth;
@@ -16,6 +15,7 @@ using Thiebheloye.Domain.Core.Interfaces;
 using Thiebheloye.Domain.Core.Interfaces.Adapters;
 using Thiebheloye.Domain.Core.Models.Identity;
 using Thiebheloye.Domain.Core.Models;
+using Thiebheloye.Identity.Data.EF.Providers;
 
 namespace Thiebheloye.Identity.Data.EF.Adapters
 {

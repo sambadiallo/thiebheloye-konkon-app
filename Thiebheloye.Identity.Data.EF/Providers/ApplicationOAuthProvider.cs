@@ -7,7 +7,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Thiebheloye.Identity.Data.EF.Models.Identity;
-namespace Thiebheloye.Identity.WebApi.Providers
+
+namespace Thiebheloye.Identity.Data.EF.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
@@ -26,8 +27,8 @@ namespace Thiebheloye.Identity.WebApi.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var userManager = context.OwinContext.GetUserManager<UserManager>();
-            //var userService = autofacLifetimeScope.Resolve<IUserService>();
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+
+            var user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {
