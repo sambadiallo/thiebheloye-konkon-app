@@ -39,10 +39,7 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
             _accessTokenFormat = accessTokenFormat;
         }
 
-
-
         // POST api/Account/Register
-
         public async Task<CommandResult> Register(RegisterCommandArguments model)
         {
             var result = new CommandResult();
