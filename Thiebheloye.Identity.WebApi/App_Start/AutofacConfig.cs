@@ -7,7 +7,6 @@ using Thiebheloye.Identity.Data.EF.Models.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler;
-using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.DataHandler.Serializer;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;

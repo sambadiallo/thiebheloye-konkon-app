@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
 using Thiebheloye.Domain.Core.Interfaces;
-using Thiebheloye.Domain.Core.Interfaces;
 
 namespace Thiebheloye.Identity.WebApi.Controllers
 {
