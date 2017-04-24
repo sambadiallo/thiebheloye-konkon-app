@@ -11,7 +11,7 @@ using Microsoft.Owin.Security.DataHandler.Serializer;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 
-namespace Thiebheloye.Identity.WebApi
+namespace Thiebheloye.iitii.WebApi
 {
     public static class AutofacConfig
     {
@@ -28,7 +28,6 @@ namespace Thiebheloye.Identity.WebApi
             // OPTIONAL: Register the Autofac filter provider.
             builder.RegisterWebApiFilterProvider(config);
 
-
             //Modules
             RegisterModules(builder);
 
@@ -40,7 +39,6 @@ namespace Thiebheloye.Identity.WebApi
 
             //Caching
             // builder.RegisterType<ApiOutputCache>().As<IApiOutputCache>().SingleInstance();
-
 
             //Set the dependency resolver to be Autofac.
             var container = builder.Build();
@@ -70,8 +68,8 @@ namespace Thiebheloye.Identity.WebApi
             //builder.RegisterModule(new Thiebheloye.Caching.Sync.Config.AutofacModule());
 
             //builder.RegisterModule(new Thiebheloye.Data.Dapper.Config.AutofacModule());
-            builder.RegisterModule(new Data.EF.Config.AutofacModule());
 
+            builder.RegisterModule(new Thiebheloye.Identity.Data.EF.Config.AutofacModule());
             builder.RegisterModule(new Thiebheloye.Identity.Domain.Commands.Config.AutofacModule());
             builder.RegisterModule(new Thiebheloye.Identity.Domain.Queries.Config.AutofacModule());
 

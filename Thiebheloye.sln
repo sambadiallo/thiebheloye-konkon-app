@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thiebheloye.Identity.Data.EF", "Thiebheloye.Identity.Data.EF\Thiebheloye.Identity.Data.EF.csproj", "{98FF3DD7-7028-4546-B23C-DB3E194D3DD1}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thiebheloye.Identity.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thiebheloye.Identity.Domain.Commands", "Thiebheloye.Identity.Domain.Commands\Thiebheloye.Identity.Domain.Commands.csproj", "{4328096C-523F-4261-A51A-009CDB65E7CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thiebheloye.Identity.WebApi", "Thiebheloye.Identity.WebApi\Thiebheloye.Identity.WebApi.csproj", "{4E99B0F7-3C59-4B81-A20F-7189856E4AEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thiebheloye.iitii.WebApi", "Thiebheloye.Identity.WebApi\Thiebheloye.iitii.WebApi.csproj", "{4E99B0F7-3C59-4B81-A20F-7189856E4AEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C217905B-7791-481A-864A-8D8EC854B8D2}"
 EndProject

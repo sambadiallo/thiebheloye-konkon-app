@@ -4,7 +4,7 @@ using Thiebheloye.Domain.Core.Interfaces.Commands;
 using Thiebheloye.Domain.Core.Models;
 using Thiebheloye.Domain.Core.Models.Identity;
 
-namespace Thiebheloye.Identity.WebApi.Controllers
+namespace Thiebheloye.iitii.WebApi.Controllers
 {
 
     [RoutePrefix("api/User")]

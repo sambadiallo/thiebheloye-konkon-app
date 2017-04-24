@@ -1,10 +1,9 @@
-﻿using Thiebheloye.Identity.WebApi;
+﻿using Thiebheloye.iitii.WebApi;
 using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
-
-namespace Thiebheloye.Identity.WebApi
+namespace Thiebheloye.iitii.WebApi
 {
     public partial class Startup
     {

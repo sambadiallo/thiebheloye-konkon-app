@@ -7,7 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Thiebheloye.Identity.Data.EF.Models.Identity;
-namespace Thiebheloye.Identity.WebApi.Providers
+namespace Thiebheloye.iitii.WebApi.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

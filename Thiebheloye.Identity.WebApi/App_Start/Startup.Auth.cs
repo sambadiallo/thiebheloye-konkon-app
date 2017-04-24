@@ -1,5 +1,5 @@
 ﻿using System;
-using Thiebheloye.Identity.WebApi.Providers;
+using Thiebheloye.iitii.WebApi.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Thiebheloye.Identity.Data.EF.Models.Identity;
 
-namespace Thiebheloye.Identity.WebApi
+namespace Thiebheloye.iitii.WebApi
 {
     public partial class Startup
     {

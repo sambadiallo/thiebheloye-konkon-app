@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Thiebheloye.Identity.Data.EF.Models.Identity;
-using Thiebheloye.Identity.WebApi.Providers;
+using Thiebheloye.iitii.WebApi.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,9 +15,9 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Thiebheloye.Domain.Core.Models.Identity;
-using Thiebheloye.Identity.WebApi.Results;
+using Thiebheloye.iitii.WebApi.Results;
 
-namespace Thiebheloye.Identity.WebApi.Controllers
+namespace Thiebheloye.iitii.WebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

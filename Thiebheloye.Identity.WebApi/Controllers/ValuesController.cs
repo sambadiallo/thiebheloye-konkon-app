@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace Thiebheloye.Identity.WebApi.Controllers
+namespace Thiebheloye.iitii.WebApi.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

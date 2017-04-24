@@ -8,7 +8,7 @@ using Thiebheloye.Identity.Data.EF.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
-using Thiebheloye.Identity.WebApi.Providers;
+using Thiebheloye.iitii.WebApi.Providers;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.OAuth;
@@ -39,10 +39,7 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
             _accessTokenFormat = accessTokenFormat;
         }
 
-
-
         // POST api/Account/Register
-
         public async Task<CommandResult> Register(RegisterCommandArguments model)
         {
             var result = new CommandResult();
@@ -59,13 +56,13 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
         }
 
         // POST api/Account/Logout
-
         public CommandResult Logout()
         {
             _authenticationManager.SignOut(CookieAuthenticationDefaults.AuthenticationType);
             return new CommandResult();
         }
 
+        // POST api/Account/Login
         public async Task<CommandResult> Login(LoginCommandArguments arguments)
         {
             var result = new CommandResult();
@@ -127,7 +124,6 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
         public async Task<CommandResult> ChangePassword(ChangePasswordBindingModel model)
         {
 
-
             IdentityResult result = await _userManager.ChangePasswordAsync(_authenticationManager.User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
 
             if (!result.Succeeded)
@@ -149,9 +145,7 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
         // POST api/Account/AddExternalLogin
         public async Task<CommandResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
-
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-
             AuthenticationTicket ticket = _accessTokenFormat.Unprotect(model.ExternalAccessToken);
 
             if (ticket == null || ticket.Identity == null || (ticket.Properties != null
@@ -178,8 +172,6 @@ namespace Thiebheloye.Identity.Data.EF.Adapters
         // POST api/Account/RemoveLogin
         public async Task<IResult> RemoveLogin(RemoveLoginBindingModel model)
         {
-
-
             IdentityResult result;
 
             if (model.LoginProvider == LocalLoginProvider)

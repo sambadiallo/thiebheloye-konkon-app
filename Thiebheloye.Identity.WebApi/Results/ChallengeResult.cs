@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Thiebheloye.Identity.WebApi.Results
+namespace Thiebheloye.iitii.WebApi.Results
 {
     public class ChallengeResult : IHttpActionResult
     {
